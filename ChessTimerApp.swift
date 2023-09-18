@@ -23,15 +23,65 @@ class GameSetupOptions: ObservableObject {
     enum Players {
         case player1, player2
     }
+
+    
     enum timeControls {
         case halfMin, oneMin, fiveMin, tenMin, fifteenMin,thirtyMin, sixtyMin
     }
+
+    
+    struct TimeControlOption: Identifiable {
+        let id = UUID()
+        let timeControl: GameSetupOptions.timeControls
+        let timeDescription: String
+    }
+    
+    let timeControlOptions = [
+        TimeControlOption(timeControl: .halfMin, timeDescription: "30s"),
+        TimeControlOption(timeControl: .oneMin, timeDescription: "1m"),
+        TimeControlOption(timeControl: .fiveMin, timeDescription: "5m"),
+        TimeControlOption(timeControl: .tenMin, timeDescription: "10m"),
+        TimeControlOption(timeControl: .fifteenMin, timeDescription: "15m"),
+        TimeControlOption(timeControl: .thirtyMin, timeDescription: "30m"),
+        TimeControlOption(timeControl: .sixtyMin, timeDescription: "60m"),
+    ]
+    
     enum increments {
         case none, oneS, twoS, fiveS, tenS
     }
+    
+    struct IncrementButtonInfo: Identifiable {
+        let id = UUID()
+        let label: String
+        let value: GameSetupOptions.increments
+    }
+
+    let incrementButtonInfos: [IncrementButtonInfo] = [
+        IncrementButtonInfo(label: "none", value: .none),
+        IncrementButtonInfo(label: "1s", value: .oneS),
+        IncrementButtonInfo(label: "2s", value: .twoS),
+        IncrementButtonInfo(label: "5s", value: .fiveS),
+        IncrementButtonInfo(label: "10s", value: .tenS),
+    ]
+    
+    
     enum delays {
         case none, oneS, twoS, fiveS, tenS
     }
+    
+    struct DelayButtonInfo: Identifiable {
+        let id = UUID()
+        let label: String
+        let value: GameSetupOptions.delays
+    }
+    
+    let delayButtonInfos: [DelayButtonInfo] = [
+        DelayButtonInfo(label: "none", value: .none),
+        DelayButtonInfo(label: "1s", value: .oneS),
+        DelayButtonInfo(label: "2s", value: .twoS),
+        DelayButtonInfo(label: "5s", value: .fiveS),
+        DelayButtonInfo(label: "10s", value: .tenS),
+    ]
     
     @Published var white: Players = .player1
     @Published var timeControl: timeControls = .sixtyMin

@@ -18,5 +18,6 @@ There are many improvements that could be made on this, which I hope to plug awa
 - Allow for arbitrary time controls to be manually typed in.
 - Dark mode option
 - Controls should scale based on device type 
-- Each click could be up to .1 second off based on how the timer counts down.  It should be relatively trivial to reduce that substantially.#  <#Title#>
+- Each click could be up to .1 second off based on how the timer counts down.  It should be relatively trivial to reduce that substantially.
+- 
 
