@@ -47,7 +47,7 @@ class GameSetupOptions: ObservableObject {
     ]
     
     enum increments {
-        case none, oneS, twoS, fiveS, tenS
+        case none, oneS, twoS, fiveS, tenS, fifteenS
     }
     
     struct IncrementButtonInfo: Identifiable {
@@ -62,6 +62,7 @@ class GameSetupOptions: ObservableObject {
         IncrementButtonInfo(label: "2s", value: .twoS),
         IncrementButtonInfo(label: "5s", value: .fiveS),
         IncrementButtonInfo(label: "10s", value: .tenS),
+        IncrementButtonInfo(label: "15s", value: .fifteenS)
     ]
     
     
@@ -172,7 +173,8 @@ class Game: ObservableObject {
         GameSetupOptions.increments.oneS:10,
         GameSetupOptions.increments.twoS:20,
         GameSetupOptions.increments.fiveS:50,
-        GameSetupOptions.increments.tenS:100
+        GameSetupOptions.increments.tenS:100,
+        GameSetupOptions.increments.fifteenS:150,
     ]
     
     let delayDict: [GameSetupOptions.delays: Int] =

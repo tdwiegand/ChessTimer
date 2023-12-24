@@ -14,17 +14,24 @@ struct ContentView: View {
     let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     var body: some View {
         HStack{
-            Button(action:currentGame.p1Press) {
+            Button(action: currentGame.p1Press) {
                 Text(currentGame.readableTime(clocktime: currentGame.p1time))
                     .font(.system(size: 40, design: .monospaced))
                     .foregroundColor(.black)
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+            }
+            .frame(maxWidth: .infinity)
+            .buttonStyle(.bordered)
+            .overlay(
+                Group {
+                    if currentGame.playState == .play && currentGame.activePlayer == .player1 {
+                        RoundedRectangle(cornerRadius: 60) // Adjust cornerRadius as needed
+                            .stroke(Color.black, lineWidth: 2) // Adjust lineWidth for border thickness
+                    }
                 }
-                .frame(maxWidth: .infinity)
-    //            .background(Color.green)
-                .buttonStyle(.bordered)
-                .controlSize(.large)
-                .padding()
+            )
+            .padding()
+
             VStack{
                 HStack{
                     Image(systemName: "chevron.left")
@@ -61,16 +68,22 @@ struct ContentView: View {
                     Image(systemName: "chevron.right")
                         .font(.system(size:40))
                 }.padding()            }.accentColor(Color(.black))
-            Button(action:currentGame.p2Press) {
+            Button(action: currentGame.p2Press) {
                 Text(currentGame.readableTime(clocktime: currentGame.p2time))
                     .font(.system(size: 40, design: .monospaced))
                     .foregroundColor(.black)
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
             }
             .frame(maxWidth: .infinity)
-//            .background(Color.green)
             .buttonStyle(.bordered)
-            .controlSize(.large)
+            .overlay(
+                Group {
+                    if currentGame.playState == .play && currentGame.activePlayer == .player2 {
+                        RoundedRectangle(cornerRadius: 60) // Adjust cornerRadius as needed
+                            .stroke(Color.black, lineWidth: 2) // Adjust lineWidth for border thickness
+                    }
+                }
+            )
             .padding()
         }
     }
