@@ -218,6 +218,7 @@ class Game: ObservableObject {
         }
         if self.p1time == 0 || self.p2time == 0 {
             self.playerFlagged = true
+            self.playState = .pause
             print("flagged")
             }
         }
@@ -225,14 +226,22 @@ class Game: ObservableObject {
     
     
     func togglePlayPause() {
-        self.playState = (self.playState == .play) ? .pause : .play
+        if !self.playerFlagged
+        {
+            self.playState = (self.playState == .play) ? .pause : .play
+        }
     }
     
     func p1Press() {
         if self.activePlayer == .player1 && self.playState == .play {
             if self.p1time > 0 {self.p1time += currentGame.incrementDict[gameSetup.increment]!
                 self.delayCounter = self.delayDict[gameSetup.delay]!
-                self.activePlayer = .player2}
+                self.activePlayer = .player2
+                DispatchQueue.main.async {
+                                        let generator = UIImpactFeedbackGenerator(style: .light)
+                                        generator.impactOccurred()
+                                    }
+            }
         }
     }
     
@@ -240,7 +249,12 @@ class Game: ObservableObject {
         if self.activePlayer == .player2 && self.playState == .play {
             if self.p2time > 0 {self.p2time += currentGame.incrementDict[gameSetup.increment]!
                 self.delayCounter = self.delayDict[gameSetup.delay]!
-                self.activePlayer = .player1}
+                self.activePlayer = .player1
+                DispatchQueue.main.async {
+                                        let generator = UIImpactFeedbackGenerator(style: .light)
+                                        generator.impactOccurred()
+                                    }
+            }
         }
     }
     

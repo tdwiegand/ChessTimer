@@ -43,7 +43,13 @@ struct ContentView: View {
                 }.padding()
                 Text(" ")
                     .font(.system(size:40))
-                Button(action:currentGame.togglePlayPause){
+                Button(action: {
+                    if currentGame.playerFlagged {
+                        currentGame.p1time = 1; currentGame.p2time = 1;  viewRouter.currentPage = .page1
+                    } else {
+                        currentGame.togglePlayPause()
+                    }
+                }) {
                     Image(systemName: currentGame.playPauseIcon(currentState: currentGame.playState))
                         .font(.system(size:40))
                 }
