@@ -238,9 +238,9 @@ class Game: ObservableObject {
                 self.delayCounter = self.delayDict[gameSetup.delay]!
                 self.activePlayer = .player2
                 DispatchQueue.main.async {
-                                        let generator = UIImpactFeedbackGenerator(style: .light)
-                                        generator.impactOccurred()
-                                    }
+                    let generator = UIImpactFeedbackGenerator(style: .medium)
+                    generator.impactOccurred()
+                }
             }
         }
     }
@@ -251,9 +251,9 @@ class Game: ObservableObject {
                 self.delayCounter = self.delayDict[gameSetup.delay]!
                 self.activePlayer = .player1
                 DispatchQueue.main.async {
-                                        let generator = UIImpactFeedbackGenerator(style: .light)
-                                        generator.impactOccurred()
-                                    }
+                    let generator = UIImpactFeedbackGenerator(style: .medium)
+                    generator.impactOccurred()
+                }
             }
         }
     }

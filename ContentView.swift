@@ -25,8 +25,8 @@ struct ContentView: View {
             .overlay(
                 Group {
                     if currentGame.playState == .play && currentGame.activePlayer == .player1 {
-                        RoundedRectangle(cornerRadius: 60) // Adjust cornerRadius as needed
-                            .stroke(Color.black, lineWidth: 2) // Adjust lineWidth for border thickness
+                        RoundedRectangle(cornerRadius: 65)
+                            .stroke(Color.black, lineWidth: 2)
                     }
                 }
             )
@@ -85,8 +85,8 @@ struct ContentView: View {
             .overlay(
                 Group {
                     if currentGame.playState == .play && currentGame.activePlayer == .player2 {
-                        RoundedRectangle(cornerRadius: 60) // Adjust cornerRadius as needed
-                            .stroke(Color.black, lineWidth: 2) // Adjust lineWidth for border thickness
+                        RoundedRectangle(cornerRadius: 65)
+                            .stroke(Color.black, lineWidth: 2)
                     }
                 }
             )
